@@ -9,7 +9,7 @@ const createDeposito = (sequelize, DataTypes) => {
   {
     timestamps: false,
   });
-
+  Deposito.removeAttribute('id')
   return Deposito;
 };
 
