@@ -3,7 +3,14 @@ const createAtivo = (sequelize, DataTypes) => {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     nome: DataTypes.STRING,
     quantidade: DataTypes.INTEGER,
-    valor: DataTypes.DECIMAL(10, 2),
+    valor: {
+      type: DataTypes.DECIMAL(10, 2),
+      get(valueName){
+        const value = this.getDataValue(valueName)
+        return value === null ? null : parseFloat(value)
+      }
+    }
+    
   },
   {
     timestamps: false,
