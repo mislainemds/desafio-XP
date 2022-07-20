@@ -9,6 +9,7 @@ const createSaque = (sequelize, DataTypes) => {
   {
     timestamps: false,
   });
+  Saque.removeAttribute('id')
 
   return Saque;
 };

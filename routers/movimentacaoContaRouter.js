@@ -6,5 +6,6 @@ const movimentacaoController = require('../controllers/movimentacaoContaControll
 
 
 movimentacaoRouter.post('/conta/deposito', movimentacaoController.postDeposito);
+movimentacaoRouter.post('/conta/saque', movimentacaoController.postSaque);
 
 module.exports = movimentacaoRouter;
