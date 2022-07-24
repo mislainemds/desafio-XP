@@ -19,6 +19,9 @@ const createAtivo = (sequelize, DataTypes) => {
   Ativo.associate = (models) => {
     Ativo.hasMany(models.Venda, {
       foreignKey: 'codAtivo',
+    }),
+    Ativo.hasMany(models.Compra, {
+      foreignKey: 'codAtivo',
     })
   }
 
