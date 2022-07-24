@@ -2,12 +2,13 @@ const movimentacaoService = require('../services/movimentacaoContaService')
 
 const movimentacaoController = {
   postDeposito: async (req, res) => {
-    const dados = req.body;
-    if (dados.valor <= 0) {
-      return res.status(400).json({ message: "Valor deve ser superior a zero"})
+    try {
+      const dados = req.body;
+      const novoDeposito = await movimentacaoService.postDeposito(dados)
+      return res.status(201).json(novoDeposito)
+    } catch (e) {
+      return res.status(400).json({ message: e.message})
     }
-    const novoDeposito = await movimentacaoService.postDeposito(dados)
-    return res.status(201).json(novoDeposito)
   },
   postSaque: async (req, res) => {
     try {

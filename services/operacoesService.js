@@ -19,7 +19,7 @@ const operacoesService = {
     const novaCompra = await Compra.create({ codCliente: dados.codCliente, codAtivo: dados.codAtivo, quantidade: dados.quantidade, valor: valorCompra, })
     const compra = novaCompra.dataValues
     const { valor, ...dadosCompra } = compra
-    await Ativo.increment({ quantidade: -quantidadeCompraAtivos }, { where: { id: dados.codAtivo } })
+    await Ativo.decrement({ quantidade: quantidadeCompraAtivos }, { where: { id: dados.codAtivo } })
 
     return dadosCompra
   },
@@ -30,6 +30,11 @@ const operacoesService = {
 
     const quantidadeVendaAtivos = dados.quantidade;
     const valorVenda = valorAtivo * quantidadeVendaAtivos;
+
+    const quantidadeAtivosCliente = await ativosService.getAtivosCodCliente(dados.codCliente)
+    quantidadeAtivosCliente.map((quant) => {
+      if (quantidadeVendaAtivos > quant.quantidadeTotal) throw new Error("Quantidade solicitada excede a quantidade de ativos disponível na carteira")
+    })
     
     const novaVenda = await Venda.create({ codCliente: dados.codCliente, codAtivo: dados.codAtivo, quantidade: dados.quantidade, valor: valorVenda, })
     const venda = novaVenda.dataValues

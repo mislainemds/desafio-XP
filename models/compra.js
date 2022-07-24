@@ -15,6 +15,12 @@ const createCompra = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
+  Compra.removeAttribute('id')
+  Compra.associate = (models) => {
+    Compra.belongsTo(models.Ativo, 
+      { foreignKey: 'codAtivo', })
+  }
+
   return Compra;
 };
 

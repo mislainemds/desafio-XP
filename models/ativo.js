@@ -10,11 +10,19 @@ const createAtivo = (sequelize, DataTypes) => {
         return value === null ? null : parseFloat(value)
       }
     }
-    
   },
   {
     timestamps: false,
   });
+
+  Ativo.associate = (models) => {
+    Ativo.hasMany(models.Venda, {
+      foreignKey: 'codAtivo',
+    }),
+    Ativo.hasMany(models.Compra, {
+      foreignKey: 'codAtivo',
+    })
+  }
 
   return Ativo;
 };
