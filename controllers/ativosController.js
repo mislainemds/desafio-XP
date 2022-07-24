@@ -5,6 +5,12 @@ const ativosController = {
     const { id } = req.params;
     const ativo = await ativosService.getAtivo(id)
     return res.status(200).json(ativo);
+  },
+  getAtivosCodCliente: async (req, res) => {
+    const { id } = req.params;
+
+    const ativo = await ativosService.getAtivosCodCliente(id)
+    return res.status(200).json(ativo);
   }
 }
 

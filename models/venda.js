@@ -15,6 +15,12 @@ const createVenda = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
+  Venda.removeAttribute('id')
+  Venda.associate = (models) => {
+    Venda.belongsTo(models.Ativo, 
+      { foreignKey: 'codAtivo', })
+  }
+
   return Venda;
 };
 

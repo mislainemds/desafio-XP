@@ -1,10 +1,10 @@
 const createCompra = (sequelize, DataTypes) => {
   const Compra = sequelize.define('Compra', {
-    codAtivo: { 
+    codCliente: { 
       type: DataTypes.INTEGER,
       foreignKey: true,
     },
-    codCliente: { 
+    codAtivo: { 
       type: DataTypes.INTEGER,
       foreignKey: true,
     },
@@ -14,6 +14,8 @@ const createCompra = (sequelize, DataTypes) => {
   {
     timestamps: false,
   });
+
+  Compra.removeAttribute('id')
 
   return Compra;
 };
