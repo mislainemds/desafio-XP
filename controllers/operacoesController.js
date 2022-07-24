@@ -11,9 +11,13 @@ const operacoesController = {
     }
   },
   postVenda: async (req, res) => {
-    const dados = req.body
-    const novaVenda = await operacoesService.postVenda(dados);
-    return res.status(201).json(novaVenda);
+    try {
+      const dados = req.body
+      const novaVenda = await operacoesService.postVenda(dados);
+      return res.status(201).json(novaVenda);
+    } catch (e) {
+      return res.status(400).json({ message: e.message });
+    }
   }
 }
 

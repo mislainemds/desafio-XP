@@ -10,7 +10,6 @@ const createAtivo = (sequelize, DataTypes) => {
         return value === null ? null : parseFloat(value)
       }
     }
-    
   },
   {
     timestamps: false,
