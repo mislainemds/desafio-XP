@@ -10,21 +10,22 @@ const ativosService = {
 
     const compras = await Compra.findAll({
       where: { codCliente: codCliente },
+      include: { model: Ativo, },
       attributes: [
         "codAtivo",
-        [sequelize.fn("sum", sequelize.col("quantidade")), "quantidadeTotal"],
+        [sequelize.fn("sum", sequelize.col("Compra.quantidade")), "quantidadeTotal"],
       ],
       group: ["codAtivo"],
     });
 
     compras.forEach(async (compra) => {
-      const { codAtivo, quantidadeTotal } = compra.dataValues;
+      const { codAtivo, quantidadeTotal, Ativo } = compra.dataValues;
       if (!totalAtivos[codAtivo]) {
         totalAtivos[codAtivo] = {
           codCliente,
           codAtivo,
           quantidadeTotal: parseInt(quantidadeTotal),
-          valor: 0
+          valor: + Ativo.dataValues.valor
         };
       }
     });
@@ -45,12 +46,11 @@ const ativosService = {
         totalAtivos[codAtivo] = {
           codAtivo,
           quantidadeTotal: -parseInt(quantidadeTotal),
-          valor: 0
+          valor: + Ativo.dataValues.valor
         };
       }
       
       totalAtivos[codAtivo].quantidadeTotal -= parseInt(quantidadeTotal);
-      totalAtivos[codAtivo].valor = + Ativo.dataValues.valor
     });
 
     return Object.values(totalAtivos);
