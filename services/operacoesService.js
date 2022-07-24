@@ -7,9 +7,14 @@ const operacoesService = {
     const ativo = await ativosService.getAtivo(dados.codAtivo)
     const ativoDatavalues = ativo.dataValues;
     const valorAtivo = ativoDatavalues.valor;
+    const saldoCliente = await saldoClienteService.getByCliente(dados.codCliente)
 
     const quantidadeCompraAtivos = dados.quantidade;
     const valorCompra = valorAtivo * quantidadeCompraAtivos;
+
+    if (valorCompra > saldoCliente.saldo) throw new Error('Saldo do cliente é Insuficiente')
+    
+    if (dados.quantidade > ativoDatavalues.quantidade) throw new Error("Quantidade de ativos disponiveis insuficiente ")
 
     const novaCompra = await Compra.create({ codCliente: dados.codCliente, codAtivo: dados.codAtivo, quantidade: dados.quantidade, valor: valorCompra, })
     const compra = novaCompra.dataValues
