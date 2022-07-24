@@ -1,10 +1,10 @@
 const createCompra = (sequelize, DataTypes) => {
   const Compra = sequelize.define('Compra', {
-    codAtivo: { 
+    codCliente: { 
       type: DataTypes.INTEGER,
       foreignKey: true,
     },
-    codCliente: { 
+    codAtivo: { 
       type: DataTypes.INTEGER,
       foreignKey: true,
     },
