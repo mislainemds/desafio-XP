@@ -25,7 +25,7 @@ Para rodar com Docker é preciso ter instalado na maquina:
 
 Inicie com o comando:
 ```
-docker-compose up
+docker compose -f "docker-compose.yml" up -d --build
 ```
 
 ## ⚙️ Executando os testes
