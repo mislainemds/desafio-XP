@@ -4,6 +4,8 @@
 
 Foram passadas instruções a serem seguidas pelos participantes do processo, de modo que ao fim desse processo os mesmo tivessem tido contato com um pouco do que é vivenciado no dia-a-dia da XP.
 
+## Deploy
+https://desafio-turmaxp.herokuapp.com/
 
 ## 🚀 Começando
 
@@ -59,8 +61,6 @@ npm test
 * Sinon
 
 ## Melhorias
-
-Deploy
 
 Documentação de API
 
