@@ -28,6 +28,16 @@ Inicie com o comando:
 docker compose -f "docker-compose.yml" up -d --build
 ```
 
+Para criar as tabelas execute:
+```
+npx sequelize db:migrate 
+```
+e para popular as tabelas
+
+```
+npx sequelize db:seed:all  
+```
+
 ## ⚙️ Executando os testes
 
 Para executar os testes:
