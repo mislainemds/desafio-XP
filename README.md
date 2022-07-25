@@ -60,6 +60,8 @@ npm test
 
 ## Melhorias
 
+Deploy
+
 Documentação de API
 
 Autenticação e autorização JWT
