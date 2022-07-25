@@ -15,25 +15,6 @@ Entre na pasta do repositório que acabou de clonar
 
 ### 📋 Pré-requisitos
 
-## Rodando localmente
-- Para rodar localmente é preciso ter instalado na maquina:
-
-* Node
-* MYSQL
-* NPM
-
-Instale as dependências do projeto rodando o seguinte comando:
-
-```
-npm install
-```
-
-Inicie o servidor:
-
-```
-npm start
-```
-
 ## Rodando com Docker
 Para rodar com Docker é preciso ter instalado na maquina:
 
@@ -50,10 +31,6 @@ docker-compose up
 Para executar os testes:
 ```
 npm test
-```
-ou
-```
-npm test nomeDoArquivo
 ```
 
 
@@ -84,8 +61,6 @@ npm test nomeDoArquivo
 ## Melhorias
 
 Documentação de API
-
-Deploy
 
 Autenticação e autorização JWT
 
